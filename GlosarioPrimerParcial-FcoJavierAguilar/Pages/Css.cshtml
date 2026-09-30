@@ -1,4 +1,38 @@
 ﻿@page
 @model GlosarioPrimerParcial_FcoJavierAguilar.Pages.CssModel
 @{
+    ViewData["Title"] = "Glosario CSS";
 }
+
+<div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1 style="color: #e34c26; border-bottom: 2px solid #e34c26;">Glosario de CSS</h1>
+
+    <ul style="list-style-type: none; padding: 0;">
+        @foreach (var termino in CssModel.GlosarioCss)
+        {
+            <li style="background-color: #f4f4f4; margin-bottom: 15px; padding: 15px; border-left: 5px solid #e34c26;">
+                <h3 style="margin: 0 0 10px 0; color: #333;">@termino.Palabra</h3>
+                <p style="margin: 0; color: #555;">@termino.Definicion</p>
+                <small style="color: #999; display: block; margin-top: 10px;">Agregado: @termino.FechaAgregado.ToString("g")</small>
+            </li>
+        }
+    </ul>
+
+    <hr style="margin: 40px 0;" />
+
+    <h2 style="color: #333;">Agregar Término CSS</h2>
+    <form method="post" style="background-color: #ffebe6; padding: 20px; border-radius: 8px;">
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Término:</label>
+            <input type="text" name="nuevaPalabra" placeholder="Ej. style" required style="width: 100%; padding: 8px;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">Definición:</label>
+            <input type="text" name="nuevaDefinicion" required style="width: 100%; padding: 8px;" />
+        </div>
+        <button type="submit" style="background-color: #e34c26; color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer;">Guardar Término</button>
+        <a href="/Index">
+            <span style="display: inline-block; padding: 10px 20px; background-color: #e34c26; color:white; border-radius: 5px; font-weight: bold;">Regresar a Inicio</span>
+        </a>
+    </form>
+</div>
